@@ -1,0 +1,16 @@
+{
+  "name": "smartcontracts-spike",
+  "version": "1.0.0",
+  "description": "a spike for implementing solidity-like contracts using oop design patterns",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha"
+  },
+  "author": "Francisco Llamosas Baptista",
+  "license": "ISC",
+  "devDependencies": {
+    "chai": "^4.3.6",
+    "mocha": "^10.0.0",
+    "yarn": "^1.22.19"
+  }
+}
