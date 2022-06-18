@@ -1,9 +1,10 @@
 class ERC20 {
 
-    constructor(name, symbol) {
+    constructor(name, symbol, mintBehaviour) {
         this.name = name
         this.symbol = symbol
         this.balances = {}
+        this.mint = mintBehaviour.performMint().bind(this)
     }
 
     getName() {
@@ -28,12 +29,6 @@ class ERC20 {
 
     getHolders() {
         return Object.keys(this.balances) 
-    }
-
-    mint(amount, to) {
-        if(amount <=0) throw Error('Must mint a positive amount')
-    
-        this.balances[to] !== undefined ? this.balances[to] += amount : this.balances[to] = amount
     }
 
     transfer(amount, from, to) {
