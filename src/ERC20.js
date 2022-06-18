@@ -1,9 +1,9 @@
 class ERC20 {
 
-    constructor(name, symbol, transferBehaviour, mintBehaviour) {
+    constructor(name, symbol) {
         this.name = name
         this.symbol = symbol
-
+        this.balances = {}
     }
 
     getName() {
@@ -12,6 +12,18 @@ class ERC20 {
 
     getSymbol() {
         return this.symbol
+    }
+
+    getBalances() {
+        return this.balances
+    }
+
+    balanceOf(holder) {
+        return this.balances[holder] != undefined ? this.balances[holder] : 0
+    }
+
+    getHolders() {
+        return Object.keys(this.balances) 
     }
 
 }

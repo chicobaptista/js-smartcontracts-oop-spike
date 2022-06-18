@@ -16,13 +16,25 @@ describe('ERC20 Token', () => {
              it('should have the correct symbol', () =>{
                  expect(contract.getSymbol()).to.equal(ERC20_PROPS.Symbol)
              })
+
+             it('should not havse any holders', () => {
+                expect(contract.getHolders()).to.eql([])
+             })
+        })
+        describe('James', () => {
+            it('should start with 0 balance', () => {
+                expect(contract.balanceOf(USERS.JAMES)).to.equal(0)
+            })
         })
      })
 
 })
 
 function makeSut() {
-
+    const USERS = {
+        JAMES: 'James',
+        ALICE: 'Alice'
+    }
     const ERC20_PROPS = {
         Name: 'TestContract',
         Symbol: 'TstTkn'
@@ -30,5 +42,5 @@ function makeSut() {
 
     const contract = new ERC20(ERC20_PROPS.Name, ERC20_PROPS.Symbol)
 
-    return {ERC20_PROPS, contract}
+    return {USERS, ERC20_PROPS, contract}
 }
