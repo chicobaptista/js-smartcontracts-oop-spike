@@ -18,6 +18,10 @@ class ERC20 {
         return this.balances
     }
 
+    getTotalSupply() {
+        return this.getHolders().reduce((totalBalance, holder) => totalBalance += this.balanceOf(holder), 0)
+    }
+
     balanceOf(holder) {
         return this.balances[holder] != undefined ? this.balances[holder] : 0
     }

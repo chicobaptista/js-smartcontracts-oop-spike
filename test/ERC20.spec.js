@@ -20,6 +20,10 @@ describe('ERC20 Token', () => {
              it('should not have any holders', () => {
                 expect(contract.getHolders()).to.eql([])
              })
+
+             it('should have a totalSupply of 0', () => {
+                expect(contract.getTotalSupply()).to.equal(0)
+             })
         })
         describe('James', () => {
             it('should start with 0 balance', () => {
@@ -73,6 +77,16 @@ describe('ERC20 Token', () => {
         describe('Contract', () => {
             it('should not allow James to transfer more than their current balance', () => {
                 expect(() => contract.transfer(40, USERS.JAMES, USERS.ALICE)).to.throw('Sender does not have enough funds')
+            })
+        })
+     })
+
+     describe('05 - Read total supply until now', () => {
+        describe('Contract', () => {
+            describe('getTotalSupply', () => {
+                it('should return the total minted supply', () => {
+                    expect(contract.getTotalSupply()).to.equal(100)
+                })
             })
         })
      })
