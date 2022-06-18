@@ -47,6 +47,9 @@ describe('ERC20 Token', () => {
             })
         })
         describe('Contract', () => {
+            it('should not transfer negative tokens', () => {
+                expect(()=> contract.transfer(-100, USERS.JAMES, USERS.ALICE)).to.throw('Must attempt to transfer a positive amount')
+            })
             it('should transfer 80 tokens from James to Alice', () => {
                 contract.transfer(80, USERS.JAMES, USERS.ALICE)
                 expect(contract.balanceOf(USERS.ALICE)).to.equal(80)
