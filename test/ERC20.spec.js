@@ -17,7 +17,7 @@ describe('ERC20 Token', () => {
                  expect(contract.getSymbol()).to.equal(ERC20_PROPS.Symbol)
              })
 
-             it('should not havse any holders', () => {
+             it('should not have any holders', () => {
                 expect(contract.getHolders()).to.eql([])
              })
         })
