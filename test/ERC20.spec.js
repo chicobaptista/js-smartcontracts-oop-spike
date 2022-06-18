@@ -67,6 +67,15 @@ describe('ERC20 Token', () => {
             })
         })
      })
+
+
+     describe('04 - Second transfer', () => {
+        describe('Contract', () => {
+            it('should not allow James to transfer more than their current balance', () => {
+                expect(() => contract.transfer(40, USERS.JAMES, USERS.ALICE)).to.throw('Sender does not have enough funds')
+            })
+        })
+     })
 })
 
 function makeSut() {
