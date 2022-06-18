@@ -10,7 +10,13 @@
   "license": "ISC",
   "devDependencies": {
     "chai": "^4.3.6",
+    "cz-conventional": "^0.0.2",
     "mocha": "^10.0.0",
     "yarn": "^1.22.19"
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional"
+    }
   }
 }
