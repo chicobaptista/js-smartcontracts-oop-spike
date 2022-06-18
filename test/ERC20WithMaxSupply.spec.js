@@ -28,8 +28,21 @@ describe('ERC20WithMaxSupply', () => {
                 expect(contract.getTotalSupply()).to.equal(0)
              })
              it('should have the correct maximum supply', () => {
-                expect(contract.getMaxSupply()).to.equal(50)
+                expect(contract.getMaxSupply()).to.equal(ERC20MaxSupply_PROPS.maxSupply)
              })
+        })
+    })
+
+    describe('01 - Initial mint', () => {
+        describe('Contract', () => {
+            describe('mint', () => {
+                it('should not allow minting of amount grater than maxSupply', () => {
+                    expect(() => contract.mint(ERC20MaxSupply_PROPS.maxSupply + 50, USERS.ALICE)).to.throw('amount would bring total supply over maximum supply')
+                })
+                it('should allow for minting below maxSupply', () => {
+                    contract.mint(ERC20MaxSupply_PROPS.maxSupply, USERS.JAMES)
+                })
+            })
         })
     })
 })
