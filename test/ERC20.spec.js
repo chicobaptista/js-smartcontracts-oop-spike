@@ -39,6 +39,31 @@ describe('ERC20 Token', () => {
             })
         })
      })
+
+     describe('02 - First transfer', () => {
+        describe('Alice', () => {
+            it('should have 0 tokens', () => {
+                expect(contract.balanceOf(USERS.ALICE)).to.equal(0)
+            })
+        })
+        describe('Contract', () => {
+            it('should transfer 80 tokens from James to Alice', () => {
+                contract.transfer(80, USERS.JAMES, USERS.ALICE)
+                expect(contract.balanceOf(USERS.ALICE)).to.equal(80)
+                expect(contract.balanceOf(USERS.JAMES)).to.equal(20)
+            })
+        })
+     })
+
+     describe('03 - List Holders', () => {
+        describe('Contract', () => {
+            describe('getHolders', () => {
+                it('should return the list of current Holders', () => {
+                    expect(contract.getHolders()).to.eql([USERS.JAMES, USERS.ALICE])
+                })
+            })
+        })
+     })
 })
 
 function makeSut() {

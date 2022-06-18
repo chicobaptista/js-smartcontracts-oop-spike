@@ -31,6 +31,14 @@ class ERC20 {
     
         this.balances[to] !== undefined ? this.balances[to] += amount : this.balances[to] = amount
     }
+
+    transfer(amount, from, to) {
+        if(amount <= 0) throw Error('Must attempt to transfer a positive amount')
+        if(this.balanceOf(from) < amount) throw Error('Sender does not have enough funds')
+        
+        this.balances[from] -= amount
+        this.balances[to] ? this.balances[to] += amount : this.balances[to] = amount
+    }
 }
 
 module.exports = ERC20
