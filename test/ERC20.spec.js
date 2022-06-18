@@ -28,6 +28,17 @@ describe('ERC20 Token', () => {
         })
      })
 
+     describe('01 - First minting', () => {
+        describe('Contract', () => {
+            it('should not mint a negative amount', () => {
+                expect(() => contract.mint(-400, USERS.ALICE)).to.throw('Must mint a positive amount')
+            })
+            it('should mint 100 tokens to James', () => {
+                contract.mint(100, USERS.JAMES)
+                expect(contract.balanceOf(USERS.JAMES)).to.equal(100)
+            })
+        })
+     })
 })
 
 function makeSut() {
