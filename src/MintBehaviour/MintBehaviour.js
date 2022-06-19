@@ -1,5 +1,8 @@
 class MintBehaviour {
-    performMint()  {
+    constructor(tokenRef) {
+        this.tokenRef = tokenRef
+    }
+    performMint(amount, to)  {
         throw Error('Not implemented')
     }
 }

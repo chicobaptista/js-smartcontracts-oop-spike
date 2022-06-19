@@ -4,7 +4,6 @@ class ERC20 {
         this.name = name
         this.symbol = symbol
         this.balances = {}
-        this.mint = mintBehaviour.performMint().bind(this)
     }
 
     getName() {
@@ -29,6 +28,14 @@ class ERC20 {
 
     getHolders() {
         return Object.keys(this.balances) 
+    }
+
+    setMintBehaviour(mintBehaviour) {
+        this.mintBehaviour = mintBehaviour
+    }
+
+    mint(amount, to) {
+        this.mintBehaviour.performMint(amount, to)
     }
 
     transfer(amount, from, to) {

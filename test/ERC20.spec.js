@@ -103,7 +103,8 @@ function makeSut() {
         Symbol: 'TstTkn'
     }
 
-    const contract = new ERC20(ERC20_PROPS.Name, ERC20_PROPS.Symbol, new SimpleMintBehaviour())
+    const contract = new ERC20(ERC20_PROPS.Name, ERC20_PROPS.Symbol)
+    contract.setMintBehaviour(new SimpleMintBehaviour(contract))
 
     return {USERS, ERC20_PROPS, contract}
 }
