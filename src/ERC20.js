@@ -1,6 +1,6 @@
 class ERC20 {
 
-    constructor(name, symbol, mintBehaviour) {
+    constructor(name, symbol) {
         this.name = name
         this.symbol = symbol
         this.balances = {}
