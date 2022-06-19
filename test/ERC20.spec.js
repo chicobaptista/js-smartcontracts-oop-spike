@@ -3,6 +3,7 @@ const expect = chai.expect;
 
 const ERC20 = require('../src/ERC20')
 const SimpleMintBehaviour = require('../src/MintBehaviour/SimpleMintBehaviour')
+const SimpleTransferBehaviour = require('../src/TransferBehaviour/SimpleTransferBehaviour')
 
 describe('ERC20 Token', () => {
     let contract, USERS, ERC20_PROPS
@@ -105,6 +106,7 @@ function makeSut() {
 
     const contract = new ERC20(ERC20_PROPS.Name, ERC20_PROPS.Symbol)
     contract.setMintBehaviour(new SimpleMintBehaviour(contract))
+    contract.setTransferBehaviour(new SimpleTransferBehaviour(contract))
 
     return {USERS, ERC20_PROPS, contract}
 }

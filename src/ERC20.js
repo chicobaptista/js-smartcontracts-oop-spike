@@ -38,12 +38,12 @@ class ERC20 {
         this.mintBehaviour.performMint(amount, to)
     }
 
+    setTransferBehaviour(transferBehaviour){
+        this.transferBehaviour = transferBehaviour
+    }
+
     transfer(amount, from, to) {
-        if(amount <= 0) throw Error('Must attempt to transfer a positive amount')
-        if(this.balanceOf(from) < amount) throw Error('Sender does not have enough funds')
-        
-        this.balances[from] -= amount
-        this.balances[to] ? this.balances[to] += amount : this.balances[to] = amount
+        this.transferBehaviour.performTransfer(amount, from, to)
     }
 }
 
