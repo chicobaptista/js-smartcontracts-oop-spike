@@ -1,16 +1,16 @@
 const MintBehaviour = require('./MintBehaviour') 
 
 class MaxSupplyMintBehavior extends MintBehaviour{
-    constructor(tokenRef, maxSupply){
+    constructor(tokenRef, mintBehaviour, maxSupply){
         super(tokenRef)
+        this.mintBehaviour = new mintBehaviour(tokenRef)
         this.maxSupply = maxSupply
     }
-    performMint(amount, to) {
-            if(amount <=0) throw Error('Must mint a positive amount')
-            if(this.tokenRef.getTotalSupply() + amount > this.getMaxSupply()) throw Error('amount would bring total supply over maximum supply')
-        
-            this.tokenRef.balances[to] !== undefined ? this.tokenRef.balances[to] += amount : this.tokenRef.balances[to] = amount
-        
+    performMint (amount, to) {
+            if(this.tokenRef.getTotalSupply() + amount > this.getMaxSupply()) 
+                throw Error('amount would bring total supply over maximum supply')
+            
+            this.mintBehaviour.performMint(amount, to)
     }
 
     getMaxSupply() {

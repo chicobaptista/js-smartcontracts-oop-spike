@@ -3,6 +3,7 @@ const expect = chai.expect;
 
 const ERC20 = require('../src/ERC20')
 const MaxSupplyMintBehaviour = require('../src/MintBehaviour/MaxSupplyMintBehaviour')
+const SimpleMintBehaviour = require('../src/MintBehaviour/SimpleMintBehaviour')
 
 
 describe('ERC20WithMaxSupply', () => {
@@ -63,7 +64,7 @@ function makeSut() {
     }
 
     const contract = new ERC20(ERC20_PROPS.Name, ERC20_PROPS.Symbol)
-    contract.setMintBehaviour(new MaxSupplyMintBehaviour(contract, ERC20MaxSupply_PROPS.maxSupply))
+    contract.setMintBehaviour(new MaxSupplyMintBehaviour(contract, SimpleMintBehaviour, ERC20MaxSupply_PROPS.maxSupply))
 
     return {USERS, ERC20_PROPS, ERC20MaxSupply_PROPS, contract}
 }
